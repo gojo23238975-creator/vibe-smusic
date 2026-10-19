@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIBE — Music & Weather</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">vibe<span>.</span></a>
+    <div class="status"><i></i> YOUR PERSONAL SPACE</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="tag">✦ MUSIC FOR YOUR MOOD</div>
+      <h1>Поймай свой<br><span>вайб.</span></h1>
+      <p>Твоя музыка. Твоя погода. Твоё настроение.</p>
+      <button class="primary" onclick="document.querySelector('#music').scrollIntoView({behavior:'smooth'})">
+        Найти музыку ↗
+      </button>
+      <div class="disc"><div>V</div></div>
+    </section>
+
+    <section id="music" class="section">
+      <div class="section-top">
+        <div><small>YOUR SOUNDTRACK</small><h2>Музыкальная комната</h2></div>
+        <span class="number">01 / MUSIC</span>
+      </div>
+
+      <form id="searchForm" class="search">
+        <span>⌕</span>
+        <input id="query" placeholder="Gata Only, Peligrosa, Basic Minimum..." required>
+        <button>Найти ↗</button>
+      </form>
+
+      <div class="chips">
+        <button data-song="Gata Only">Gata Only</button>
+        <button data-song="Peligrosa">Peligrosa</button>
+        <button data-song="Basic Minimum">Basic Minimum</button>
+        <button data-song="Bad Bunny">Bad Bunny</button>
+      </div>
+
+      <div class="result-heading">
+        <span id="resultTitle">Популярные запросы</span>
+        <small>TRACK PREVIEWS</small>
+      </div>
+      <div id="results" class="tracks">
+        <div class="empty">
+          <div>♫</div>
+          <b>Что будем слушать?</b>
+          <p>Выбери песню выше или введи название.</p>
+        </div>
+      </div>
+      <p class="hint">Некоторые песни доступны только как короткое превью. Полная версия может открываться в музыкальном сервисе.</p>
+    </section>
+
+    <section id="weather" class="section">
+      <div class="section-top">
+        <div><small>OUTSIDE YOUR WINDOW</small><h2>Погода сейчас</h2></div>
+        <span class="number">02 / WEATHER</span>
+      </div>
+
+      <form id="weatherForm" class="search">
+        <span>⌖</span>
+        <input id="city" value="Tashkent" placeholder="Введи город..." required>
+        <button>Погода ↗</button>
+      </form>
+
+      <div class="weather">
+        <div class="weather-head">
+          <div>
+            <small>ТВОЙ ГОРОД</small>
+            <h3 id="cityName">Tashkent</h3>
+            <p id="description">Загружаем погоду...</p>
+          </div>
+          <div class="weather-icon" id="weatherIcon">☀</div>
+        </div>
+        <div class="weather-info">
+          <div id="temperature" class="temperature">--°</div>
+          <div class="weather-stats">
+            <div><small>ОЩУЩАЕТСЯ</small><b id="feels">--°</b></div>
+            <div><small>ВЕТЕР</small><b id="wind">-- км/ч</b></div>
+          </div>
+        </div>
+        <div class="weather-bottom">
+          <span><i></i> Данные онлайн</span>
+          <span id="updated">LIVE WEATHER</span>
+        </div>
+      </div>
+      <p class="hint">Погода предоставляется Open-Meteo. Нужен интернет.</p>
+    </section>
+  </main>
+
+  <footer><a class="logo" href="#">vibe<span>.</span></a><span>Made for your mood ✦</span></footer>
+
+  <div class="player">
+    <div class="now-playing">
+      <img id="cover" alt="" src="">
+      <div><b id="trackName">Выбери свой трек</b><small id="artistName">Твой саундтрек начинается здесь</small></div>
+    </div>
+    <div class="controls">
+      <button id="play" aria-label="Воспроизвести">▶</button>
+      <div class="timeline">
+        <span id="currentTime">0:00</span>
+        <input id="seek" type="range" min="0" max="30" value="0">
+        <span id="duration">0:30</span>
+      </div>
+    </div>
+    <div class="volume">♫ <input id="volume" type="range" min="0" max="1" step=".01" value=".8"></div>
+  </div>
+
+  <audio id="audio"></audio>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
